@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bsgd.social.dao.SocialMapper">
+  <resultMap id="BaseResultMap" type="com.bsgd.social.domain.entity.Social">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="publisher_id" jdbcType="VARCHAR" property="publisherId" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="publisher_name" jdbcType="VARCHAR" property="publisherName" />
+    <result column="photo" jdbcType="VARCHAR" property="photo" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="publisher_photo" jdbcType="VARCHAR" property="publisherPhoto" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="publish_content" jdbcType="LONGVARCHAR" property="publishContent" />
+  </resultMap>
+</mapper>

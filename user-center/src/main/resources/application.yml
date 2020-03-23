@@ -1,0 +1,33 @@
+#指定服务的端口号
+server:
+  port: 8001
+#  配置sentinel信息
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+info:
+  appneme: user
+  author: wsl
+#  指定到nacos
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    sentinel:
+      #指定sentinel的控制台地址
+      transport:
+        dashboard: localhost:8080
+  application:
+    name: user-center
+  # 数据库配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/cultivation?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
