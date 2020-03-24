@@ -20,10 +20,12 @@
         <module>facility-center</module>
         <module>user-center</module>
         <module>social-center</module>
+        <module>gateway</module>
     </modules>
-    <!--jdk使用版本-->
+    <!--使用版本xin信息-->
     <properties>
         <java.version>1.8</java.version>
+        <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
     </properties>
 
     <!--集成web服务-->
@@ -67,10 +69,10 @@
             <version>5.2.3</version>
         </dependency>
         <!--        集成阿里巴巴的sentinel服务，面向云原生微服务的高可用流控防护组件主要功能是容错，断路器-->
-                <dependency>
-                    <groupId>com.alibaba.cloud</groupId>
-                    <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-                </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
         <!--mysql连接 要输入版本不然默认的是8.X的版本-->
         <dependency>
             <groupId>mysql</groupId>
@@ -102,14 +104,26 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-<!--        集成actuator-->
+        <!--        集成actuator-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        <!--        引入rocketMQ-->
         <dependency>
-            <groupId>com.alibaba.csp</groupId>
-            <artifactId>sentinel-transport-simple-http</artifactId>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-spring-boot-starter</artifactId>
+            <version>2.0.3</version>
+        </dependency>
+        <!--       stream 可以实现快速收发消息-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-stream-rocketmq</artifactId>
+        </dependency>
+        <!--        引入网关,不引用zuul是因为gateway要替代zuul-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
     </dependencies>
 
@@ -154,11 +168,13 @@
                     <verbose>true</verbose>
                 </configuration>
                 <dependencies>
+                    <!--                    mysql连接主要核心包-->
                     <dependency>
                         <groupId>mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>
                         <version>5.1.48</version>
                     </dependency>
+                    <!--                    通用mapper包-->
                     <dependency>
                         <groupId>tk.mybatis</groupId>
                         <artifactId>mapper</artifactId>

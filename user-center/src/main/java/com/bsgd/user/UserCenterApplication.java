@@ -19,6 +19,7 @@ public class UserCenterApplication {
     }
 
     //引入RestTemplate
+    //在spring容器中,创建一个对象,类型RestTemplate;名称/ID是方法名
     @Bean
 //    引入Robin
     @LoadBalanced
